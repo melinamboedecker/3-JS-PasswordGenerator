@@ -9,7 +9,7 @@ var lower = "abcdefghijklmnopqrstuvwxyz"
 var upper = lower.toUpperCase();
 var numbers = "0123456789";
 var specialChar = "!@#$%^&*()_+~`;':,.<>/?[]{}"
-var availableChar = lower;
+var availableChar;
 
 // Write password to the #password input
 function writePassword() {
@@ -46,7 +46,7 @@ function writePassword() {
   //to be used to generate the password
   function getAvailableChar() {
 
-    //availableChar = lower;
+    availableChar = lower;
 
     //add upper case to avaiable characters if checked yes
     if (includeUpper) {
@@ -69,7 +69,8 @@ function writePassword() {
   function generatePassword () {
     var pwChar = '';
     for (let i = 0; i < numOfCharacters; i++) {
-      var nextChar = Math.floor(Math.random()*numOfCharacters + 1);
+      var nextChar = Math.floor(Math.random()*availableChar.length + 1);
+      console.log(nextChar);
       pwChar += availableChar.charAt(nextChar)  
     }
     return pwChar;
