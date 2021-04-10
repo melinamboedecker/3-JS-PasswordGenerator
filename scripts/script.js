@@ -2,6 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 var numOfCharacters;
+var includeLower = false;
 var includeUpper = false;
 var includeNum = false;
 var includeSpecial = false;
@@ -33,6 +34,9 @@ function writePassword() {
 
   //ask user if they want to include uppercase letters, numbers, and/or special characters
   //and change corresponding include variables depending on confirm window entry
+  includeLower = window.confirm("Include lowercase letters?");
+  console.log(includeLower);
+
   includeUpper = window.confirm("Include Uppercase Letters?");
   console.log(includeUpper);
 
@@ -46,7 +50,12 @@ function writePassword() {
   //to be used to generate the password
   function getAvailableChar() {
 
-    availableChar = lower;
+    availableChar = "";
+
+    //add lowercase to available characters if checked yes
+    if (includeLower) {
+      availableChar += lower;
+    }
 
     //add upper case to avaiable characters if checked yes
     if (includeUpper) {
@@ -59,6 +68,11 @@ function writePassword() {
     //add special characters to available characters if checked yes
     if (includeSpecial) {
       availableChar += specialChar;
+    }
+
+    if (includeLower == false && includeUpper == false && includeNum == false && includeSpecial == false) {
+      window.alert("You must choose at least one character type");
+      writePassword();
     }
   }
 
