@@ -70,9 +70,11 @@ function writePassword() {
       availableChar += specialChar;
     }
 
-    if (includeLower == false && includeUpper == false && includeNum == false && includeSpecial == false) {
+    if (!includeLower && !includeUpper && !includeNum && !includeSpecial) {
       window.alert("You must choose at least one character type");
       writePassword();
+    } else {
+      return;
     }
   }
 
@@ -80,6 +82,8 @@ function writePassword() {
   getAvailableChar();
   console.log(availableChar);
 
+  //use .charAt and math.floor with math.random to randomly choose a character from the string
+  //of available characters the same number of times as the chosen password length
   function generatePassword () {
     var pwChar = '';
     for (let i = 0; i < numOfCharacters; i++) {
@@ -90,6 +94,7 @@ function writePassword() {
     return pwChar;
   }
 
+  //put randomly chosen password into text area
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
