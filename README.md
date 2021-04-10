@@ -9,4 +9,5 @@ This is a password generator made using Java Script for the third homework for U
 
 
 ## Link
+https://melinamboedecker.github.io/3-JS-PasswordGenerator/
 
