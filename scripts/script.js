@@ -9,7 +9,7 @@ var includeSpecial = false;
 var lower = "abcdefghijklmnopqrstuvwxyz"
 var upper = lower.toUpperCase();
 var numbers = "0123456789";
-var specialChar = "!@#$%^&*()_+~`;':,.<>/?[]{}"
+var specialChar = "!@#$%^&*()_+-=~`;':,.<>/?[]{}"
 var availableChar;
 
 // Write password to the #password input
@@ -27,7 +27,7 @@ function writePassword() {
   //if non numerical value or value outside of range alert user and promt for entry again
     else if (numOfCharacters < 8 || numOfCharacters > 128 || isNaN(numOfCharacters) ) {
     window.alert("Invalid entry");
-    writePassword();
+    return;
   }  
 
   console.log(numOfCharacters);
@@ -72,10 +72,8 @@ function writePassword() {
 
     if (!includeLower && !includeUpper && !includeNum && !includeSpecial) {
       window.alert("You must choose at least one character type");
-      writePassword();
-    } else {
       return;
-    }
+    } 
   }
 
   //call getAvailableChar function to set all wanted characters into availableChar variable
